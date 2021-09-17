@@ -1,0 +1,28 @@
+---
+ - name: Install filebeat and metricbeat then transfer configuration file to VMs
+   hosts: #TODO
+   become: true
+   tasks:
+   - name: Download deb file for filebeat
+     command:
+      cmd: curl -L -O #TODO
+   - name: Install filebeat from downloaded file
+     command:
+      cmd: #TODO
+   - name: Copy filebeat config file to VM
+     copy:
+       src: #TODO
+       dest: #TODO
+   - name: Enable filebeat system
+     command:
+      cmd: filebeat modules enable system
+   - name: Setup filebeat
+     command:
+      cmd: filebeat setup
+   - name: Start filebeat service
+     command:
+      cmd: service filebeat start
+   - name: Enable filebeat on boot
+     systemd:
+       name: filebeat
+       enabled: yes
